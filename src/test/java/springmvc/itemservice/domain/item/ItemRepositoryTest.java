@@ -3,6 +3,8 @@ package springmvc.itemservice.domain.item;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import springmvc.product_project.itemservice.domain.item.Item;
+import springmvc.product_project.itemservice.domain.item.ItemRepository;
 
 import java.util.List;
 

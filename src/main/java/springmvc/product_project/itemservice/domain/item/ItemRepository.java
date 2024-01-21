@@ -1,7 +1,6 @@
-package springmvc.itemservice.domain.item;
+package springmvc.product_project.itemservice.domain.item;
 
 import org.springframework.stereotype.Repository;
-import springmvc.itemservice.domain.item.Item;
 
 import java.util.ArrayList;
 import java.util.HashMap;

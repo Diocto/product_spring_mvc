@@ -1,4 +1,4 @@
-package springmvc.itemservice.domain.item;
+package springmvc.product_project.itemservice.domain.item;
 
 import lombok.Data;
 
