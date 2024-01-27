@@ -3,9 +3,7 @@ package springmvc.product_project.itemservice.web.basic;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import springmvc.product_project.itemservice.domain.item.Item;
 import springmvc.product_project.itemservice.domain.item.ItemRepository;
 
@@ -19,7 +17,6 @@ public class BasicItemController {
 
     @GetMapping
     public String items(Model model){
-        itemRepository.save(new Item("hi",100,100));
         List<Item> items = itemRepository.findAll();
         model.addAttribute("items", items);
         return "basic/items";
@@ -32,4 +29,20 @@ public class BasicItemController {
         return "basic/item";
     }
 
+    @GetMapping("/add")
+    public String addForm() {
+        return "basic/addForm";
+    }
+
+    @PostMapping("/add")
+    public String addItem(@ModelAttribute("item") Item item, Model model){
+        itemRepository.save(item);
+        model.addAttribute("item", item);
+        return "basic/item";
+    }
+
+    @GetMapping("/edit")
+    public String editForm() {
+        return "basic/editForm";
+    }
 }
