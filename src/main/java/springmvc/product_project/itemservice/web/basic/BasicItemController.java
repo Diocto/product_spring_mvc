@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import springmvc.product_project.itemservice.domain.item.Item;
 import springmvc.product_project.itemservice.domain.item.ItemRepository;
 
@@ -35,9 +36,12 @@ public class BasicItemController {
     }
 
     @PostMapping("/add")
-    public String addItem(Item item){
-        itemRepository.save(item);
-        return "redirect:/basic/items/" + item.getId();
+    public String addItem(Item item, RedirectAttributes redirectAttributes){
+        Item savedItem = itemRepository.save(item);
+        redirectAttributes.addAttribute("itemId", savedItem.getId());
+        // 아래 패스파라미터에 없으면 쿼리파라미터로 준다.
+        redirectAttributes.addAttribute("status", true);
+        return "redirect:/basic/items/{itemId}";
     }
 
     @GetMapping("/{itemId}/edit")
